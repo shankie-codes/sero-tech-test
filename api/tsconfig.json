@@ -6,7 +6,10 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "rootDirs": ["src"],
+    "baseUrl": "src",
   },
   "typeRoots": ["node_modules/@types"]
 }

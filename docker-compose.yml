@@ -8,7 +8,6 @@ services:
     container_name: recipe-book-api
     volumes:
        - ./api:/usr/src/app/api
-       - /usr/src/app/api/node_modules
   recipe-book-ui:
     build:
       context: ./ui
@@ -19,5 +18,12 @@ services:
     volumes:
        - ./ui:/usr/src/app/ui
        - /usr/src/app/ui/node_modules
-
-######## Other containers #########
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongodb:/data/db
+    ports:
+      - '27017:27017'
+volumes:
+  mongodb:

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Ajit's curry base",
+    "ingredients": [
+      { "quantity": "3 tbps", "ingredient": "olive oil" },
+      { "quantity": "2", "ingredient": "onions, finely chopped" },
+      {
+        "quantity": "3 cloves",
+        "ingredient": "garlic, crushed or finely chopped"
+      },
+      { "quantity": "3cm piece", "ingredient": " ginger, finely chopped" },
+      {
+        "quantity": "2",
+        "ingredient": "green chillies (or frozen chilli blocks)"
+      },
+      { "quantity": "1 tin", "ingredient": "chopped tomato" },
+      { "quantity": "1 tbps", "ingredient": "tomato puree" },
+      { "quantity": "2 tsp", "ingredient": "turmeric" },
+      { "quantity": "1 tsp", "ingredient": "black pepper" },
+      { "quantity": "3 tsp", "ingredient": "salt" },
+      { "quantity": "2 tab", "ingredient": "garam masala" },
+      { "quantity": "1 tsp", "ingredient": "cumin seeds" },
+      { "quantity": "To taste", "ingredient": "olive oil" },
+      { "quantity": "To taste", "ingredient": "coriander " }
+    ],
+    "method": [
+      "Heat oil for two minutes",
+      "Add onion to oil and stir",
+      "Add garlic and ginger and stir",
+      "Cook 10-15 mins on medium heat until golden brown",
+      "Add the turmeric and tomato puree/paste and mix well",
+      "Add chopped tomatoes and stir further for another 5 min",
+      "Add black pepper, salt, garam masala, green chilli and mix for another 5 min",
+      "You base is ready. Add whatever meat or veg. "
+    ]
+  },
+  {
+    "name": "Tarka dhal",
+    "ingredients": [
+      { "quantity": "2 tbps", "ingredient": "Olive oil" },
+      { "quantity": "1 mug", "ingredient": "red lentils (dhal)" },
+      { "quantity": "1 clove", "ingredient": "garlic - finely chopped" },
+      { "quantity": "Bunch", "ingredient": "Fresh coriander - chopped" },
+      { "quantity": "1/2 tsp", "ingredient": "Red chilli powder" },
+      { "quantity": "1 tsp", "ingredient": "Salt" },
+      { "quantity": "1 tsp", "ingredient": "Turmeric" },
+      { "quantity": "1 tsp", "ingredient": "Ground coriander " },
+      { "quantity": "1 - 2", "ingredient": "Fresh green chilli (optional)" }
+    ]
+  }
+]
