@@ -17,7 +17,7 @@ services:
     stdin_open: true
     volumes:
        - ./ui:/usr/src/app/ui
-       - /usr/src/app/ui/node_modules
+      #  - /usr/src/app/ui/node_modules
   mongo:
     image: mongo
     restart: always
