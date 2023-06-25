@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="header">
-      <h1>Shankie's Curry Recipe Book</h1>
+      <Link to="/">
+        <h1>Shankie's Curry Club 🍛😋</h1>
+      </Link>
     </div>
   );
 };

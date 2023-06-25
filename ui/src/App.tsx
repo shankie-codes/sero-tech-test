@@ -19,19 +19,27 @@ const App = () => {
     },
   });
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <Layout>
-        <QueryClientProvider client={queryClient}>
-          <Router>
-            <QueryParamProvider adapter={ReactRouter5Adapter}>
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        globalStyles: (theme) => ({
+          a: { textDecoration: "none", color: theme.colors.blue[9] },
+        }),
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <QueryParamProvider adapter={ReactRouter5Adapter}>
+            <Layout>
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/recipes" component={Recipes} />
               </Switch>
-            </QueryParamProvider>
-          </Router>
-        </QueryClientProvider>
-      </Layout>
+            </Layout>
+          </QueryParamProvider>
+        </Router>
+      </QueryClientProvider>
     </MantineProvider>
   );
 };

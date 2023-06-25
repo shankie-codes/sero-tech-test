@@ -46,6 +46,17 @@
       { "quantity": "1 tsp", "ingredient": "Turmeric" },
       { "quantity": "1 tsp", "ingredient": "Ground coriander " },
       { "quantity": "1 - 2", "ingredient": "Fresh green chilli (optional)" }
+    ],
+    "method": [
+      "Wash the lentils in cold water until the water runs clear",
+      "Put the lentils in a pan with 2 mugs of water",
+      "Add the turmeric, salt, chilli powder and ground coriander",
+      "Bring to the boil and simmer for 20 mins",
+      "Add green chilli",
+      "Add more water if necessary",
+      "In a separate pan, heat the oil and add the garlic",
+      "Fry for 1 min and add to the lentils",
+      "Stir in the chopped coriander and serve"
     ]
   }
 ]

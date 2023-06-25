@@ -13,12 +13,16 @@ export const get = async ({
 
   return await db
     .collection("recipes")
-    .find({
-      $or: [
-        { name: { $regex: searchPattern } },
-        { "ingredients.ingredient": { $regex: searchPattern } },
-      ],
-    })
+    .find(
+      search
+        ? {
+            $or: [
+              { name: { $regex: searchPattern } },
+              { "ingredients.ingredient": { $regex: searchPattern } },
+            ],
+          }
+        : {}
+    )
     .toArray();
 };
 

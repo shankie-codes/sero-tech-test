@@ -1,8 +1,8 @@
 export type Recipe = {
-  _id: string;
+  _id?: string;
   name: string;
   ingredients: Ingredient[];
-  method?: string[];
+  method: string[];
 };
 
 export type Ingredient = {

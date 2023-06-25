@@ -1,39 +1,35 @@
 import React from "react";
-import { Modal } from "@mantine/core";
-
-// type Props = {
-//   id: string;
-// };
+import { Modal, Skeleton } from "@mantine/core";
+import { useHistory, useParams } from "react-router-dom";
+import { useGetRecipe } from "../hooks/useGetRecipe";
+import Ingredients from "./Ingredients";
+import Method from "./Method";
 
 const Recipe = () => {
-  console.log("modal");
-  return (
-    <Modal
-      opened={true}
-      onClose={() => {
-        console.log("closed");
-      }}
-      title="Recipe"
-    >
-      "blah"
-    </Modal>
-  );
-  // const recipesQuery = useGetRecipes({
-  //   search: search || "",
-  // });
+  const history = useHistory();
+  const { id } = useParams<{ id: string }>();
+  const recipeQuery = useGetRecipe({
+    id: id,
+  });
 
-  // if (recipesQuery.isLoading || recipesQuery.isFetching)
-  //   return <Skeleton height={200} width={400} />;
-  // if (recipesQuery.error) return <div>{`Error: ${recipesQuery.error}`}</div>;
-  // if (recipesQuery.isSuccess)
-  //   return (
-  //     <List>
-  //       {recipesQuery.data.map((recipe: Recipe) => (
-  //         <List.Item key={recipe._id}>{recipe.name}</List.Item>
-  //       ))}
-  //     </List>
-  //   );
-  // return null;
+  if (recipeQuery.isLoading || recipeQuery.isFetching)
+    return <Skeleton height={200} width={400} />;
+  if (recipeQuery.error) return <div>{`Error: ${recipeQuery.error}`}</div>;
+  if (recipeQuery.isSuccess)
+    return (
+      <Modal
+        opened={true}
+        miw="15rem"
+        onClose={() => {
+          history.push("/recipes");
+        }}
+        title={recipeQuery.data.name}
+      >
+        <Ingredients ingredients={recipeQuery.data.ingredients} />
+        <Method method={recipeQuery.data.method} />
+      </Modal>
+    );
+  return null;
 };
 
 export default Recipe;

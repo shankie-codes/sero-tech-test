@@ -1,16 +1,24 @@
 import { FunctionComponent } from "react";
-import { Box, Button, Group, TextInput } from "@mantine/core";
+import { Box, Button, TextInput, createStyles } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useHistory } from "react-router-dom";
 import { StringParam, useQueryParam } from "use-query-params";
+import FieldWrapper from "./FieldWrapper";
 
 type SearchType = {
   search: string;
 };
 
+const useStyles = createStyles((theme) => ({
+  textInput: {
+    marginBottom: "1em",
+  },
+}));
+
 const Search: FunctionComponent = ({ children }) => {
   const history = useHistory();
   const [search] = useQueryParam("search", StringParam);
+  const { classes } = useStyles();
 
   const form = useForm<SearchType>({
     initialValues: {
@@ -19,20 +27,21 @@ const Search: FunctionComponent = ({ children }) => {
   });
 
   return (
-    <Box maw={300} mx="auto">
+    <Box>
       <form
         onSubmit={form.onSubmit((values) =>
           history.push(`/recipes?search=${values.search}`)
         )}
       >
-        <TextInput
-          label="Search"
-          placeholder="Search by recipe name or ingredient 😋"
-          {...form.getInputProps("search")}
-        />
-        <Group position="right" mt="md">
+        <FieldWrapper>
+          <TextInput
+            label="Search"
+            className={classes.textInput}
+            placeholder="Search by recipe name or ingredient 😋"
+            {...form.getInputProps("search")}
+          />
           <Button type="submit">Search</Button>
-        </Group>
+        </FieldWrapper>
       </form>
     </Box>
   );

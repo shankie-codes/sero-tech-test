@@ -5,17 +5,20 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import Search from "../../components/Search";
 import RecipeList from "./components/RecipeList";
 import Recipe from "./components/Recipe";
+import AddRecipe from "./components/AddRecipe";
 
 const Recipes = () => {
   const { path } = useRouteMatch();
   const [search] = useQueryParam("search", StringParam);
-  console.log({ path });
   return (
     <Fragment>
       <Search />
       <Switch>
         <Route exact path={path}>
           <RecipeList search={search} />
+        </Route>
+        <Route exact path={`${path}/add`}>
+          <AddRecipe />
         </Route>
         <Route path={`${path}/:id`}>
           <h1>Recipe</h1>
