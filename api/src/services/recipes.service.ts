@@ -2,9 +2,24 @@ import { Recipe } from "types";
 import { connect } from "./db.service";
 import { ObjectId } from "mongodb";
 
-export const get = async () => {
+export const get = async ({
+  search,
+}: {
+  search: string | null | undefined;
+}) => {
+  const searchPattern = new RegExp(search, "i");
+
   const db = await connect();
-  return await db.collection("recipes").find({}).toArray();
+
+  return await db
+    .collection("recipes")
+    .find({
+      $or: [
+        { name: { $regex: searchPattern } },
+        { "ingredients.ingredient": { $regex: searchPattern } },
+      ],
+    })
+    .toArray();
 };
 
 export const getOne = async (id: string) => {
@@ -14,7 +29,7 @@ export const getOne = async (id: string) => {
 
 export const create = async (recipe: Recipe) => {
   const db = await connect();
-  return (await db.collection("recipes").insertOne(recipe)).insertedId;
+  return (await db.collection<Recipe>("recipes").insertOne(recipe)).insertedId;
 };
 
 export const remove = async (id: string) => {

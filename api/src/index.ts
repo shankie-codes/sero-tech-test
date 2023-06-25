@@ -25,26 +25,6 @@ export class Application {
 
   setupRoutes() {
     app.use("/recipes", recipesRouter);
-    // app.get("/recipes", async (req: Request, res: Response) => {
-    //   try {
-    //     const db: Db = await connect();
-    //     const recipes = await db.collection("recipes").find().toArray();
-
-    //     res.json(recipes);
-    //   } catch (error) {
-    //     console.error("Error retrieving users:", error);
-    //     res.status(500).send("Internal Server Error");
-    //   }
-    // });
-    // app.get("/recipes/:id", (req: Request, res: Response) => {
-    //   res.status(200).send("");
-    // });
-    // app.post("/recipes", (req: Request, res: Response) => {
-    //   res.status(200).send("");
-    // });
-    // app.delete("/recipes/:id", (req: Request, res: Response) => {
-    //   res.status(200).send("");
-    // });
     app;
   }
 }

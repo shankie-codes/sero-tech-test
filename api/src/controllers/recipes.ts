@@ -8,7 +8,9 @@ export const get = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    res.json(await recipes.get());
+    res.json(
+      await recipes.get({ search: req.query.search.toString() || null })
+    );
   } catch (err) {
     console.error("Error while getting recipes", err.message);
     next(err);

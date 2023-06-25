@@ -1,9 +1,5 @@
-import "./home.css";
+import Search from "../../components/Search";
 
 export const Home = () => {
-  return (
-    <div>
-      <h1>Recipe App</h1>
-    </div>
-  );
+  return <Search />;
 };

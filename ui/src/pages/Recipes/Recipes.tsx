@@ -1,26 +1,29 @@
-import { FunctionComponent } from "react";
-import { createStyles, List, rem, Skeleton } from "@mantine/core";
-import { useGetRecipes } from "./hooks/useGetRecipes";
-import { Recipe } from "../../types";
+import { Fragment } from "react";
+import { StringParam, useQueryParam } from "use-query-params";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 
-const useStyles = createStyles((theme) => ({}));
+import Search from "../../components/Search";
+import RecipeList from "./components/RecipeList";
+import Recipe from "./components/Recipe";
 
-const Recipes: FunctionComponent = () => {
-  const { classes } = useStyles();
-  const recipesQuery = useGetRecipes();
-
-  if (recipesQuery.isLoading || recipesQuery.isFetching)
-    return <Skeleton height={200} width={400} />;
-  if (recipesQuery.error) return <div>{`Error: ${recipesQuery.error}`}</div>;
-  if (recipesQuery.isSuccess)
-    return (
-      <List>
-        {recipesQuery.data.map((recipe: Recipe) => (
-          <List.Item key={recipe._id}>{recipe.name}</List.Item>
-        ))}
-      </List>
-    );
-  return null;
+const Recipes = () => {
+  const { path } = useRouteMatch();
+  const [search] = useQueryParam("search", StringParam);
+  console.log({ path });
+  return (
+    <Fragment>
+      <Search />
+      <Switch>
+        <Route exact path={path}>
+          <RecipeList search={search} />
+        </Route>
+        <Route path={`${path}/:id`}>
+          <h1>Recipe</h1>
+          <Recipe />
+        </Route>
+      </Switch>
+    </Fragment>
+  );
 };
 
 export default Recipes;
