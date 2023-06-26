@@ -3,12 +3,10 @@ import {
   ActionIcon,
   Box,
   Button,
-  Flex,
   Group,
   Modal,
   Text,
   TextInput,
-  createStyles,
 } from "@mantine/core";
 import { useHistory } from "react-router-dom";
 import { useForm } from "@mantine/form";
@@ -20,22 +18,17 @@ import { api } from "../../../util";
 import { Recipe } from "../../../types";
 import FieldWrapper from "../../../components/FieldWrapper";
 
-const useStyles = createStyles((theme) => ({
-  fieldWrapper: {
-    backgroundColor: theme.colors.gray[1],
-    padding: "1em",
-    marginBottom: "1em",
-  },
-}));
-
 const AddRecipe = () => {
   const history = useHistory();
   const mutation = useMutation((data: Recipe) => api.post("/recipes", data), {
     onSuccess: (response) => {
       history.push(`/recipes/${response.data}`);
+      notifications.show({
+        message: "Recipe added!",
+        color: "green",
+      });
     },
   });
-  const { classes } = useStyles();
 
   const form = useForm<Recipe>({
     initialValues: {
@@ -74,6 +67,7 @@ const AddRecipe = () => {
   const methodFields = form.values.method.map((item, index) => (
     <Group key={index} mt="xs">
       <TextInput
+        data-cy={`method[${index}]`}
         placeholder="Cooking method"
         withAsterisk
         sx={{ flex: 1 }}
@@ -92,12 +86,14 @@ const AddRecipe = () => {
     <Group key={index} mt="xs">
       <TextInput
         placeholder="Quantity"
+        data-cy={`ingredients-quantity[${index}]`}
         withAsterisk
         sx={{ flex: 1 }}
         {...form.getInputProps(`ingredients.${index}.quantity`)}
       />
       <TextInput
         placeholder="Ingredient"
+        data-cy={`ingredients-ingredient[${index}]`}
         withAsterisk
         sx={{ flex: 1 }}
         {...form.getInputProps(`ingredients.${index}.ingredient`)}
@@ -123,6 +119,7 @@ const AddRecipe = () => {
         <form onSubmit={form.onSubmit(handleSubmit, handleError)}>
           <TextInput
             label="Name"
+            data-cy="name"
             placeholder="Recipe name"
             {...form.getInputProps("name")}
           />
@@ -147,6 +144,7 @@ const AddRecipe = () => {
 
               <Group mt="md">
                 <Button
+                  data-cy="add-ingredient"
                   onClick={() =>
                     form.insertListItem("ingredients", {
                       quantity: "",
@@ -174,13 +172,18 @@ const AddRecipe = () => {
               {methodFields}
 
               <Group mt="md">
-                <Button onClick={() => form.insertListItem("method", "")}>
+                <Button
+                  data-cy="add-method"
+                  onClick={() => form.insertListItem("method", "")}
+                >
                   Add method
                 </Button>
               </Group>
             </Box>
           </FieldWrapper>
-          <Button type="submit">Add recipe</Button>
+          <Button data-cy="add-recipe" type="submit">
+            Add recipe
+          </Button>
         </form>
       </Box>
       {mutation.isLoading && <p>Submitting...</p>}

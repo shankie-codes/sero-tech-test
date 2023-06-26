@@ -36,11 +36,14 @@ const Search: FunctionComponent = ({ children }) => {
         <FieldWrapper>
           <TextInput
             label="Search"
+            data-cy="search"
             className={classes.textInput}
             placeholder="Search by recipe name or ingredient 😋"
             {...form.getInputProps("search")}
           />
-          <Button type="submit">Search</Button>
+          <Button data-cy="search-submit" type="submit">
+            Search
+          </Button>
         </FieldWrapper>
       </form>
     </Box>

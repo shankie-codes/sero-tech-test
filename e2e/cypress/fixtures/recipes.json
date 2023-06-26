@@ -1,0 +1,28 @@
+{
+  "cabbageMasala": {
+    "name": "Cabbage masala",
+    "ingredients": [
+      { "quantity": "3 Tsp", "ingredient": "Oil" },
+      { "quantity": "1 tsp", "ingredient": "Mustard seeds" },
+      { "quantity": "1 tsp", "ingredient": "Cumin seeds" },
+      { "quantity": "5 to6", "ingredient": "cloves of Garlic" },
+      { "quantity": "1 whole", "ingredient": "Onion sliced" },
+      { "quantity": "1 tsp", "ingredient": "Garam  masala" },
+      { "quantity": "1 tsp", "ingredient": "Red chilli powder" },
+      { "quantity": "1/4", "ingredient": "tsp Turmeric powder" },
+      { "quantity": "1 tsp", "ingredient": "Coriander powder" },
+      { "quantity": "1 can", "ingredient": "chopped tomato" },
+      { "quantity": "1/2", "ingredient": "whole Cabbage shredded" },
+      { "quantity": "1/2", "ingredient": "cup Coriander leaves" }
+    ],
+    "method": [
+      "Heat up 3 tsp oil, add mustard seeds, cumin seeds, garlic and cook garlic till it changes its color.",
+      "Add sliced onion and cook till it becomes soft.",
+      "Add turmeric powder, garam  masala, red chilli powder, coriander powder, mix and cook for 2 mts.",
+      "Add tomatoes, mix, cover and cook till tomatoes get soft.",
+      "Add sliced cabbage and mix. Add some peas for colour",
+      "Add salt to taste, cover and cook till cabbage gets tender",
+      "Add some chopped coriander (if you like)"
+    ]
+  }
+}
